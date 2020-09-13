@@ -1,0 +1,6 @@
+.vscode/
+docs/
+out.out
+*.o
+sim.*
+*.a

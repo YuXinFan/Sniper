@@ -1,0 +1,1 @@
+./run-sniper -c ../Lab0/config-lab0.cfg -- ../Lab0/lab0.exe
