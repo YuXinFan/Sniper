@@ -766,32 +766,6 @@ void TraceThread::unblock()
    m_blocked = false;
 }
 
-std::string uint8_vector_to_hex_string(const uint8_t* v)
-{
-   std::string result;
-   result.reserve(16*2);   // two digits per character
-
-   static constexpr char hex[] = "0123456789ABCDEF";
-
-   static constexpr char clflush[] = "0FAE3B00000000000000000000000000";
-   for (int i = 0; i < 16; i++)
-   {
-      uint8_t c = *(v + sizeof(uint8_t)*i);
-      result.push_back(hex[c / 16]);
-      result.push_back(hex[c % 16]);
-   }
-   // if (result == std::string(clflush)) {
-   //    std::cout << "[Convert][clflush] uint8[16]:";
-   //    for (int i =0; i < 16; i++) 
-   //    {
-   //       std::cout<<unsigned(*(v + sizeof(uint8_t)*i))<<"/";
-   //    }
-   //    std::cout<<std::endl;
-       
-   // }
-    return result;
-}
-
 void TraceThread::run()
 {
    // Set thread name for Sniper-in-Sniper simulations
@@ -874,10 +848,12 @@ void TraceThread::run()
             LOG_PRINT_ERROR("Unknown instrumentation mode");
       }
 
-      if (inst.sinst->data[0] == 15 && inst.sinst->data[1] == 174 && inst.sinst->data[2] == 59) 
-      {
-      std::cout << "[fanyx@shanghaitech.edu.cn, TraceThread::run(), 877] CLFLUSH instruction executed"<< std::endl;
-      }
+      // // ######  [Lab0]Student Modification  ######
+      // if (inst.sinst->data[0] == 15 && inst.sinst->data[1] == 174 && inst.sinst->data[2] == 59) 
+      // {
+      //    std::cout << "[fanyx@shanghaitech.edu.cn, TraceThread::run(), 851] CLFLUSH instruction executed"<< std::endl;
+      // }
+      // // ######  [Lab0]Student Modify  ######
 
       // We may have been rescheduled to a different core
       // by prfmdl->iterate (in handleInstructionDetailed),

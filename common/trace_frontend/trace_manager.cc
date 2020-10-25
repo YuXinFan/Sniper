@@ -35,25 +35,18 @@ void TraceManager::setupTraceFiles(int index)
 
    if (m_emulate_syscalls)
    {  
-      std::cout << "{Value} m_trace_prefix:" << m_trace_prefix << std::endl;
       if (m_trace_prefix == "")
       {
-         std::cerr << "Error: a trace prefix is required when emulating syscalls." << std::endl;
          exit(1);
       }
    }
 
    if (m_trace_prefix != "")
    {  
-      std::cout << "{Value} m_num_apps: " << m_num_apps << std::endl;
       for (UInt32 i = 0 ; i < m_num_apps ; i++ )
       {
          m_tracefiles[i] = getFifoName(i, 0, false /*response*/, false /*create*/);
          m_responsefiles[i] = getFifoName(i, 0, true /*response*/, false /*create*/);
-         std::cout << "{Value} m_tracefiles[i]: " << m_tracefiles[i] << std::endl;
-         std::cout << "{Value} m_responsefiles[i]: " << m_responsefiles[i] << std::endl;
-
-
       }
    }
    else
@@ -136,7 +129,6 @@ thread_id_t TraceManager::newThread(app_id_t app_id, bool first, bool init_fifo,
          next threads are created once we're running so spawn them right away. */
       tthread->spawn();
    }
-   std::cout << "{Value} TraceManager::newThread->getId(): " << thread->getId()<< std::endl; 
    return thread->getId();
 }
 
@@ -250,10 +242,8 @@ void TraceManager::start()
    SimRoiStart();
 
    m_monitor->spawn();
-   std::cout << "{TAG} Before spawn() " << std::endl;
    for(std::vector<TraceThread *>::iterator it = m_threads.begin(); it != m_threads.end(); ++it)
       (*it)->spawn();
-   std::cout << "{TAG} After spawn()" << std::endl;
 }
 
 void TraceManager::stop()
@@ -287,9 +277,7 @@ void TraceManager::wait()
 void TraceManager::run()
 {
    start();
-   std::cout<<"{TraceManager::run()} Before wait()"<<std::endl;
    wait();
-   std::cout<<"{TraceManager::run()} After wait()"<<std::endl;
 
 }
 
