@@ -24,6 +24,7 @@ CacheSetLRU::~CacheSetLRU()
 UInt32
 CacheSetLRU::getReplacementIndex(CacheCntlr *cntlr)
 {
+   std::cout << "[CacheSetLRU]: One Cache Victim" << std::endl;
    // First try to find an invalid block
    for (UInt32 i = 0; i < m_associativity; i++)
    {
@@ -80,6 +81,8 @@ CacheSetLRU::getReplacementIndex(CacheCntlr *cntlr)
 void
 CacheSetLRU::updateReplacementIndex(UInt32 accessed_index)
 {
+   std::cout << "[CacheSetLRU]: One Cache Access" << std::endl;
+
    m_set_info->increment(m_lru_bits[accessed_index]);
    moveToMRU(accessed_index);
 }

@@ -538,6 +538,7 @@ const dl::DecodedInst* TraceThread::staticDecode(Sift::Instruction &inst)
 
 void TraceThread::handleInstructionWarmup(Sift::Instruction &inst, Sift::Instruction &next_inst, Core *core, bool do_icache_warmup, UInt64 icache_warmup_addr, UInt64 icache_warmup_size)
 {
+   std::cout << "[handleInstructionWarmup]: One Executation" << std::endl;
    if (m_decoder_cache.count(inst.sinst->addr) == 0)
       m_decoder_cache[inst.sinst->addr] = staticDecode(inst);
    
@@ -645,18 +646,31 @@ void TraceThread::handleInstructionWarmup(Sift::Instruction &inst, Sift::Instruc
    }
 }
 
+std::string uint8_to_hex(const uint8_t data[]) {
+   int len = sizeof(data)/sizeof(uint8_t);
+   std::string hex;
+   for (int i = 0; i < len ; i++) {
+      char buffer[3];
+      sprintf(buffer, "%x", data[i]);
+      hex = hex + std::string(buffer);
+   }
+   return hex;
+}
+
 void TraceThread::handleInstructionDetailed(Sift::Instruction &inst, Sift::Instruction &next_inst, PerformanceModel *prfmdl)
 {
-
+   std::cout << "[handleInstructionDetailed]: One Execution" << std::endl;
    // Set up instruction
 
    if (m_icache.count(inst.sinst->addr) == 0)
       m_icache[inst.sinst->addr] = decode(inst);
+
    // Here get the decoder instruction without checking, because we must have it for sure
    const dl::DecodedInst &dec_inst = *(m_decoder_cache[inst.sinst->addr]);
 
    Instruction *ins = m_icache[inst.sinst->addr];
    DynamicInstruction *dynins = prfmdl->createDynamicInstruction(ins, va2pa(inst.sinst->addr));
+   std::cout << "[handleInstructionDetailed]: End create dyn" << std::endl;
 
    // Add dynamic instruction info
 
@@ -664,17 +678,19 @@ void TraceThread::handleInstructionDetailed(Sift::Instruction &inst, Sift::Instr
    {
       dynins->addBranch(inst.taken, va2pa(next_inst.sinst->addr));
    }
+   
 
    // Ignore memory-referencing operands in NOP instructions
    if (!dec_inst.is_nop())
    {
       const bool is_prefetch = dec_inst.is_prefetch();
-
+      // The number of the memory operands of this dec_inst. 
       for(uint32_t mem_idx = 0; mem_idx < Sim()->getDecoder()->num_memory_operands(&dec_inst); ++mem_idx)
       {
          if (Sim()->getDecoder()->op_read_mem(&dec_inst, mem_idx))
          {
             addDetailedMemoryInfo(dynins, inst, dec_inst, mem_idx, Operand::READ, is_prefetch, prfmdl);
+            std::cout << "[handleInstructionDetailed]: Has One Memory Read" << std::endl; 
          }
       }
 
@@ -683,6 +699,9 @@ void TraceThread::handleInstructionDetailed(Sift::Instruction &inst, Sift::Instr
          if (Sim()->getDecoder()->op_write_mem(&dec_inst, mem_idx))
          {
             addDetailedMemoryInfo(dynins, inst, dec_inst, mem_idx, Operand::WRITE, is_prefetch, prfmdl);
+            std::cout << "[handleInstructionDetailed]: Has One Memory Write" << std::endl; 
+
+
          }
       }
    }
@@ -766,8 +785,16 @@ void TraceThread::unblock()
    m_blocked = false;
 }
 
+void flog(std::string s) {
+   std::cout << s << std::endl;
+}
+
 void TraceThread::run()
 {
+   flog("[TraceThread::run()]: Memory Access Simulation");
+   
+
+   std::cout << "[TraceThread::run()]: " << "Start" << std::endl;
    // Set thread name for Sniper-in-Sniper simulations
    String threadName = String("trace-") + itostr(m_thread->getId());
    SimSetThreadName(threadName.c_str());
@@ -801,6 +828,7 @@ void TraceThread::run()
       {
          unblock();
       }
+      std::cout << "[TraceThread]: One Iteration" << std::endl;
 
       core = m_thread->getCore();
       prfmdl = core->getPerformanceModel();
@@ -847,7 +875,6 @@ void TraceThread::run()
          default:
             LOG_PRINT_ERROR("Unknown instrumentation mode");
       }
-
       // // ######  [Lab0]Student Modification  ######
       // if (inst.sinst->data[0] == 15 && inst.sinst->data[1] == 174 && inst.sinst->data[2] == 59) 
       // {

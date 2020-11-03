@@ -10,6 +10,9 @@
 
 class CacheSet;
 
+// Auxiliary Tag Table. 
+// It is used to search data in distributed last level caches. If the requested data is not found in any caches, a memory address is 
+// sent from the tag directory to the memory controller.
 class ATD
 {
    private:
