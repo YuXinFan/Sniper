@@ -149,7 +149,7 @@ void MicroOpPerformanceModel::doSquashing(std::vector<DynamicMicroOp*> &current_
       }
    }
 }
-
+int insturction_num = 0;
 void MicroOpPerformanceModel::handleInstruction(DynamicInstruction *dynins)
 {
    ComponentPeriod insn_period = *(const_cast<ComponentPeriod*>(static_cast<const ComponentPeriod*>(m_elapsed_time)));
@@ -224,8 +224,13 @@ void MicroOpPerformanceModel::handleInstruction(DynamicInstruction *dynins)
    const OperandList &ops = dynins->instruction->getOperands();
    unsigned int memidx = 0;
 
-   if (m_issue_memops)
+   insturction_num++;
+   if (m_issue_memops) {
+      std::cout << "Handle Data Insturction: " << insturction_num << " Start." << std::endl;
       dynins->accessMemory(getCore());
+      std::cout << "Handle Data Insturction: " << insturction_num << " End."<< std::endl;
+
+   }
 
    // If we haven't gotten all of our read or write data yet, iterate over the operands
    for (size_t i = 0 ; i < ops.size() ; ++i)

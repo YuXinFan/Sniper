@@ -13,6 +13,8 @@
 
 #include <stdint.h>
 #include <inttypes.h>
+#include <list>
+#include <map>
 
 // We define __STDC_LIMIT_MACROS and then include stdint.h
 // But if someone else already included stdint.h without first defining __STDC_LIMIT_MACROS,
@@ -46,6 +48,18 @@ typedef SInt32 thread_id_t;
 typedef SInt32 app_id_t;
 typedef SInt32 core_id_t;
 typedef SInt32 carbon_thread_t;
+
+// Added for optimal cache replacement
+typedef struct {
+    UInt64 addr;
+    int prty;
+} Entry;
+
+extern std::list<Entry> lookahead_list;
+extern std::list<UInt64> record_for_lookahead;
+extern UInt64 curr_core_access;
+extern std::map<UInt64, bool> referenced_map;
+
 
 #define INVALID_THREAD_ID ((thread_id_t) -1)
 #define INVALID_APP_ID ((app_id_t) -1)

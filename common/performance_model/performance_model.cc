@@ -293,6 +293,31 @@ void PerformanceModel::handleIdleInstruction(PseudoInstruction *instruction)
 
 void PerformanceModel::iterate()
 {
+   while (m_instruction_queue.size() > 64)
+   {
+      // While the functional thread is waiting because of clock skew minimization, wait here as well
+      #ifdef ENABLE_PERF_MODEL_OWN_THREAD
+      while(m_hold)
+         sched_yield();
+      #endif
+
+      DynamicInstruction *ins = m_instruction_queue.front();
+
+      LOG_ASSERT_ERROR(!ins->instruction->isIdle(), "Idle instructions should not make it here!");
+
+      if (!m_fastforward && m_enabled)
+         handleInstruction(ins);
+
+      delete ins;
+
+      m_instruction_queue.pop();
+   }
+
+   synchronize();
+}
+
+void PerformanceModel::iterateAllLast()
+{
    while (m_instruction_queue.size() > 0)
    {
       // While the functional thread is waiting because of clock skew minimization, wait here as well

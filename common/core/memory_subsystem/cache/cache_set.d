@@ -19,6 +19,7 @@
  /home/fanyx/courses/CAII/sniper/common/core/memory_subsystem/cache/cache_set_random.h \
  /home/fanyx/courses/CAII/sniper/common/core/memory_subsystem/cache/cache_set_round_robin.h \
  /home/fanyx/courses/CAII/sniper/common/core/memory_subsystem/cache/cache_set_srrip.h \
+ /home/fanyx/courses/CAII/sniper/common/core/memory_subsystem/cache/cache_set_opt.h \
  /home/fanyx/courses/CAII/sniper/common/system/simulator.h \
  /home/fanyx/courses/CAII/sniper/common/misc/config.h \
  /home/fanyx/courses/CAII/sniper/common/system/clock_skew_minimization_object.h \

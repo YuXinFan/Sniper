@@ -60,6 +60,11 @@ class CacheBlockInfo
       bool updateUsage(BitsUsedType used);
 
       static const char* getOptionName(option_t option);
+
+   public: 
+      void setAddress(UInt64 addr) { m_addr = addr;};
+      UInt64 getAddress() {return m_addr;};
+      UInt64 m_addr;
 };
 
 class CacheCntlr

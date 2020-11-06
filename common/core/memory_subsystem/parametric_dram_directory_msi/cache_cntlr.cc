@@ -312,7 +312,7 @@ CacheCntlr::setDRAMDirectAccess(DramCntlrInterface* dram_cntlr, UInt64 num_outst
 /*****************************************************************************
  * operations called by core on first-level cache
  *****************************************************************************/
-
+int data_access_cnt = 0;
 HitWhere::where_t
 CacheCntlr::processMemOpFromCore(
       Core::lock_signal_t lock_signal,
@@ -383,6 +383,11 @@ LOG_ASSERT_ERROR(offset + data_length <= getCacheBlockSize(), "access until %u >
       ScopedLock sl(getLock());
       // Update the Cache Counters
       getCache()->updateCounters(cache_hit);
+      if ( getCache()->m_cache_type == 3 && getCache()->getAssociativity() == 8) {
+         std::cout << "L1 Dcache access: " << ca_address << std::endl;
+         std::cout << "data_access_cnt: " << ++data_access_cnt << std::endl;
+
+      }
       updateCounters(mem_op_type, ca_address, cache_hit, getCacheState(cache_block_info), Prefetch::NONE);
    }
 

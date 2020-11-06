@@ -32,6 +32,60 @@
 //#endif
 
 //bool TraceThread::xed_initialized = false;
+
+
+
+extern std::list<Entry> lookahead_list;
+extern UInt64 curr_core_access;
+
+int delay_loop = 50;
+int dummy_time = -1;
+uint curr_time = 0;
+
+
+void lookahead(UInt64 addr);
+void repair(Entry& entry, uint true_prty);
+bool inLookaheadList(UInt64 addr);
+
+bool inLookaheadList(UInt64 addr) {
+   for (auto it = lookahead_list.begin(); it != lookahead_list.end(); it++) {
+      if ((*it).addr == addr) {
+         return true;
+      }
+   }
+   return false;
+}
+
+void lookahead(UInt64 addr) {
+   lookahead_list.push_back( {addr, dummy_time} );
+   dummy_time--;
+   curr_time++;
+   if (referenced_map[addr]) {
+      if (!inLookaheadList(addr)){
+         repair(lookahead_list.back(), curr_time);
+      }else{
+         lookahead_list.back().prty = curr_time;
+      }
+   }
+}
+
+void repair(Entry& entry, uint true_prty) {
+   int dummy_prty = entry.prty;
+    entry.prty = true_prty;
+    auto entry_ptr = lookahead_list.begin();
+    while (entry_ptr->prty != true_prty) {
+        if ( entry_ptr->prty < 0 
+            && entry_ptr->prty > dummy_prty) {
+                if (entry_ptr->prty < entry.prty) {
+                    auto temp = entry;
+                    entry = *entry_ptr; 
+                    *entry_ptr = temp; 
+                }
+        }
+        entry_ptr++;
+    }
+}
+
 int TraceThread::m_isa = 0;
 
 TraceThread::TraceThread(Thread *thread, SubsecondTime time_start, String tracefile, String responsefile, app_id_t app_id, bool cleanup)
@@ -657,9 +711,51 @@ std::string uint8_to_hex(const uint8_t data[]) {
    return hex;
 }
 
+int insturction_number = 0;
+int access_cnt = 0;
+void spliteMemoryAccess(UInt64 addr, UInt32 size, UInt32 cache_block_size, DynamicInstruction *dynins) {
+   IntPtr begin_addr = addr;
+   IntPtr end_addr = addr + (UInt64)size;
+   IntPtr begin_addr_aligned = begin_addr - (begin_addr % cache_block_size);
+   IntPtr end_addr_aligned = end_addr - (end_addr % cache_block_size);
+   for (IntPtr curr_addr_aligned = begin_addr_aligned; curr_addr_aligned <= end_addr_aligned; curr_addr_aligned += cache_block_size) {
+      // Access the cache one line at a time
+      UInt32 curr_offset;
+      UInt32 curr_size;
+      if (curr_addr_aligned == begin_addr_aligned)
+      {
+         curr_offset = begin_addr % cache_block_size;
+      }
+      else
+      {
+         curr_offset = 0;
+      }
+
+      // Determine the size
+      if (curr_addr_aligned == end_addr_aligned)
+      {
+         curr_size = (end_addr % cache_block_size) - (curr_offset);
+         if (curr_size == 0)
+         {
+            continue;
+         }
+      }
+      //std::cout << "Instruction :" << insturction_number << "; Prediction cache address: " << curr_addr_aligned << std::endl;
+      //lookahead(curr_addr_aligned);
+      lookahead_list.push_back({(UInt64)curr_addr_aligned, 0});
+
+      //std::cout << "57062:" << dynins->instruction->getDisassembly() << std::endl;
+      access_cnt++;
+      //std::cout << "access_cnt: " << access_cnt << std::endl;
+
+   }
+}
+
+UInt64 icache_last_block = -1;
+int instruction_number = 0;
+
 void TraceThread::handleInstructionDetailed(Sift::Instruction &inst, Sift::Instruction &next_inst, PerformanceModel *prfmdl)
 {
-   std::cout << "[handleInstructionDetailed]: One Execution" << std::endl;
    // Set up instruction
 
    if (m_icache.count(inst.sinst->addr) == 0)
@@ -669,8 +765,8 @@ void TraceThread::handleInstructionDetailed(Sift::Instruction &inst, Sift::Instr
    const dl::DecodedInst &dec_inst = *(m_decoder_cache[inst.sinst->addr]);
 
    Instruction *ins = m_icache[inst.sinst->addr];
+
    DynamicInstruction *dynins = prfmdl->createDynamicInstruction(ins, va2pa(inst.sinst->addr));
-   std::cout << "[handleInstructionDetailed]: End create dyn" << std::endl;
 
    // Add dynamic instruction info
 
@@ -678,6 +774,7 @@ void TraceThread::handleInstructionDetailed(Sift::Instruction &inst, Sift::Instr
    {
       dynins->addBranch(inst.taken, va2pa(next_inst.sinst->addr));
    }
+
    
 
    // Ignore memory-referencing operands in NOP instructions
@@ -690,7 +787,7 @@ void TraceThread::handleInstructionDetailed(Sift::Instruction &inst, Sift::Instr
          if (Sim()->getDecoder()->op_read_mem(&dec_inst, mem_idx))
          {
             addDetailedMemoryInfo(dynins, inst, dec_inst, mem_idx, Operand::READ, is_prefetch, prfmdl);
-            std::cout << "[handleInstructionDetailed]: Has One Memory Read" << std::endl; 
+            
          }
       }
 
@@ -699,7 +796,6 @@ void TraceThread::handleInstructionDetailed(Sift::Instruction &inst, Sift::Instr
          if (Sim()->getDecoder()->op_write_mem(&dec_inst, mem_idx))
          {
             addDetailedMemoryInfo(dynins, inst, dec_inst, mem_idx, Operand::WRITE, is_prefetch, prfmdl);
-            std::cout << "[handleInstructionDetailed]: Has One Memory Write" << std::endl; 
 
 
          }
@@ -707,11 +803,73 @@ void TraceThread::handleInstructionDetailed(Sift::Instruction &inst, Sift::Instr
    }
 
    // Push instruction
-
    prfmdl->queueInstruction(dynins);
 
-   // simulate
+   // catch insturction memory access and date memory access 
+   auto iaddr = dynins->eip;
+   //std::cout << "iaddr: " << iaddr  << std::endl;
+   Core *core = m_thread->getCore();
+   MemoryManagerBase *memory =  core->getMemoryManager();
+   UInt32 cache_block_size =  64; //memory->getCacheBlockSize();
+   insturction_number++;
+   
+   //============Catch Inst Memory Access=======\
+     ===========================================
 
+   UInt64 blockmask = ~((UInt64)cache_block_size - 1);
+   UInt64 instruction_size = dynins->instruction->getSize();
+   bool single_cache_line = ((iaddr & blockmask) == ((iaddr + instruction_size - 1) & blockmask));
+
+   // Assume the core reads full instruction cache lines and caches them internally for subsequent instructions.
+   // This reduces L1-I accesses and power to more realistic levels.
+   // For Nehalem, it's in fact only 16 bytes, other architectures (Sandy Bridge) have a micro-op cache,
+   // so this is just an approximation.
+
+   // When accessing the same cache line as last time, don't access the L1-I
+   if ((iaddr & blockmask) == icache_last_block)
+   {
+      if (single_cache_line)
+      {
+         //std::cout << "I momory Accessed in cache:" << address << std::endl;
+      }
+      else
+      {
+         // Instruction spanning cache lines: drop the first line, do access the second one
+         iaddr = (iaddr & blockmask) + cache_block_size;
+         icache_last_block = iaddr & blockmask;
+         spliteMemoryAccess(iaddr & blockmask, instruction_size, cache_block_size, dynins);
+      }
+   }else {
+      icache_last_block = iaddr & blockmask;
+      UInt64 masked_addr = (UInt64)iaddr & (UInt64)blockmask;
+      // if (instruction_number++ == 1) {
+      //    std::cout << "test: " << masked_addr << " iaddr: " << iaddr  << " mask: " << blockmask<< std::endl;
+      // }
+      spliteMemoryAccess(masked_addr, instruction_size, cache_block_size, dynins);
+   }
+
+   //============Catch Data Memory Access=======\
+     ===========================================
+   //std::cout << "iaddr: " << iaddr  << std::endl;
+  
+   //dynins.eip 
+   for (int i = 0; i < dynins->num_memory; i++) {
+      if (dynins->memory_info[i].executed == false) {
+         continue;
+      }
+
+      auto daddr = dynins->memory_info[i].addr;
+      auto size = dynins->memory_info[i].size;
+
+      //std::cout << "daddr: " << daddr << "; size: " << size << std::endl;
+
+      spliteMemoryAccess(daddr, size, cache_block_size, dynins);
+   }
+
+
+
+
+   // simulate
    prfmdl->iterate();
 }
 
@@ -791,13 +949,14 @@ void flog(std::string s) {
 
 void TraceThread::run()
 {
-   flog("[TraceThread::run()]: Memory Access Simulation");
    
 
-   std::cout << "[TraceThread::run()]: " << "Start" << std::endl;
+
    // Set thread name for Sniper-in-Sniper simulations
    String threadName = String("trace-") + itostr(m_thread->getId());
    SimSetThreadName(threadName.c_str());
+
+   std::cout << "[TraceThread::run()]: " << "Start" << std::endl;
 
    Sim()->getThreadManager()->onThreadStart(m_thread->getId(), m_time_start);
 
@@ -816,19 +975,19 @@ void TraceThread::run()
    PerformanceModel *prfmdl = core->getPerformanceModel();
 
    Sift::Instruction inst, next_inst;
+   bool have_first;
 
-   bool have_first = m_trace.Read(inst);
+   have_first = m_trace.Read(inst);
    // Received first instruction, let TraceManager know our SIFT connection is up and running
    Sim()->getTraceManager()->signalStarted();
    m_started = true;
 
    while(have_first && m_trace.Read(next_inst))
-   {
+   {  
       if (m_blocked)
       {
          unblock();
       }
-      std::cout << "[TraceThread]: One Iteration" << std::endl;
 
       core = m_thread->getCore();
       prfmdl = core->getPerformanceModel();
@@ -875,12 +1034,6 @@ void TraceThread::run()
          default:
             LOG_PRINT_ERROR("Unknown instrumentation mode");
       }
-      // // ######  [Lab0]Student Modification  ######
-      // if (inst.sinst->data[0] == 15 && inst.sinst->data[1] == 174 && inst.sinst->data[2] == 59) 
-      // {
-      //    std::cout << "[fanyx@shanghaitech.edu.cn, TraceThread::run(), 851] CLFLUSH instruction executed"<< std::endl;
-      // }
-      // // ######  [Lab0]Student Modify  ######
 
       // We may have been rescheduled to a different core
       // by prfmdl->iterate (in handleInstructionDetailed),
@@ -899,6 +1052,38 @@ void TraceThread::run()
       inst = next_inst;
    }
 
+   // ## OPT CACHE
+   if (m_blocked)
+   {
+      unblock();
+   }
+
+   core = m_thread->getCore();
+   prfmdl = core->getPerformanceModel();
+   prfmdl->iterateAllLast();
+
+      // We may have been rescheduled to a different core
+      // by prfmdl->iterate (in handleInstructionDetailed),
+      // or core->countInstructions (when using a fast-forward performance model)
+   SubsecondTime time = prfmdl->getElapsedTime();
+   if (m_thread->reschedule(time, core))
+   {
+      core = m_thread->getCore();
+      prfmdl = core->getPerformanceModel();
+   }
+
+   // ## OPTCACHE
+   
+
+   std::cout << "[TRACE:] Data Memory Access: " << lookahead_list.size() << std::endl;
+   std::cout << "[TRACE:] Head of The Last Data Memory Access: " << lookahead_list.front().addr << std::endl;
+
+
+
+   std::cout << "[TRACE:] Last Memory Access: " << curr_core_access << std::endl;
+
+   
+   
    printf("[TRACE:%u] -- %s --\n", m_thread->getId(), m_stop ? "STOP" : "DONE");
 
    SubsecondTime time_end = prfmdl->getElapsedTime();

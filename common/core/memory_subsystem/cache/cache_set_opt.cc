@@ -2,36 +2,96 @@
 #include "log.h"
 #include "stats.h"
 
-UInt32 CacheSetOPT::getReplacementIndex(CacheCntlr *cntlr) {
+extern std::list<Entry> lookahead_list;
+/*
+Help Function 
+*/
 
+
+
+
+
+
+/*
+CacheSetInfoOPT
+*/
+CacheSetInfoOPT::CacheSetInfoOPT(String name, String cfgname, core_id_t core_id, UInt32 associativity, UInt8 num_attempts) 
+    : m_associativity(associativity)
+   , m_attempts(NULL) {
+
+}
+
+CacheSetInfoOPT::~CacheSetInfoOPT() {
+
+}
+
+int CacheSetInfoOPT::getPrty(UInt32 index) {
+    // from cache line index find data address \
+    then find address's prty in lookahead; 
+    return 0;
+}
+
+int CacheSetOPT::getPrty(UInt32 index) {
+    IntPtr addr = m_cache_block_info_array[index]->getAddress();
+
+    for (auto it = lookahead_list.begin(); it != lookahead_list.end(); it++) {
+        if ((*it).addr == addr) {
+            return (*it).prty;
+        }
+    }
+
+    return 0;
+}
+
+
+/*
+CacheSetOPT
+*/
+CacheSetOPT::CacheSetOPT(CacheBase::cache_t cache_type,
+            UInt32 associativity, UInt32 blocksize, CacheSetInfoOPT* set_info, UInt8 num_attempts)
+    :CacheSet(cache_type, associativity, blocksize) {
+    m_set_info = set_info;
+}
+
+CacheSetOPT::~CacheSetOPT() {
+
+}
+
+UInt32 CacheSetOPT::getReplacementIndex(CacheCntlr *cntlr) {
+    // First try to find an invalid block
+   for (UInt32 i = 0; i < m_associativity; i++)
+   {
+      if (!m_cache_block_info_array[i]->isValid())
+      {
+         return i;
+      }
+   }
+
+    int selected_index = 0;
+    int selected_prty = getPrty(0);
+    for (int i = 1; i < m_associativity; i++) {
+        UInt64 block_prty = getPrty(i);
+        if (block_prty == 0) {
+           selected_index = i;
+           break;
+       }
+        
+        if (block_prty > selected_prty) {
+            selected_index = i;
+        }
+   }
+   return selected_index;
 }
 
 // accessed_index is the index of the associativity
 void CacheSetOPT::updateReplacementIndex(UInt32 accessed_index) {
     //tagToAddress(m_cache_block_info_array[accessed_index]);
+    //LOG_PRINT_ERROR("Memory access not in lookahead buffer");
 }
 
-
-void CacheSetOPT::lookaheadOnce(UInt64 addr) {
-    if (isAccessed.at(addr)) {
-        if (isExecuted(addr)) {
-            buffer.push_back({addr, dummpy_timer});
-            dummpy_timer--;
-            stackRepair(addr, timer);
-        }else {
-            buffer.push_back({addr,timer});
-            timer++;
-        }
-    }
-}
 
 void CacheSetOPT::stackRepair(UInt64 addr, int timer) {
 
-    for (int i = 0; i < buffer.size(); i++) {
-        Entry deleted_entry = buffer.front();
-
-
-    }
 }
 
 void CacheSetOPT::update(int hit_depth){
@@ -69,13 +129,7 @@ int CacheSetOPT::lookup(UInt64 addr) {
     return hit_depth;
 }
 
-bool CacheSetOPT::isExecuted(UInt64 addr) {
-    bool r = true;
-    for(auto it = buffer.begin(); it != buffer.end(); it++) {
-        if ((*it).addr == addr) {
-            r = false;
-            break;
-        }
-    }
-    return r;
-}
+
+
+
+

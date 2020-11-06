@@ -131,6 +131,7 @@ Cache::insertSingleLine(IntPtr addr, Byte* fill_buff,
 
    CacheBlockInfo* cache_block_info = CacheBlockInfo::create(m_cache_type);
    cache_block_info->setTag(tag);
+   cache_block_info->setAddress(addr);
 
    m_sets[set_index]->insert(cache_block_info, fill_buff,
          eviction, evict_block_info, evict_buff, cntlr);

@@ -25,7 +25,7 @@ class Cache : public CacheBase
       UInt64 m_num_hits;
 
       // Generic Cache Info
-      cache_t m_cache_type;
+      
       CacheSet** m_sets;
       CacheSetInfo* m_set_info;
 
@@ -36,6 +36,7 @@ class Cache : public CacheBase
       #endif
 
    public:
+      cache_t m_cache_type;
 
       // constructors/destructors
       Cache(String name,
