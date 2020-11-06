@@ -4,3 +4,7 @@ out.out
 *.o
 sim.*
 *.a
+*.out
+*.log
+lookahead
+*/lookahead

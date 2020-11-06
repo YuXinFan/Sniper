@@ -293,7 +293,7 @@ void PerformanceModel::handleIdleInstruction(PseudoInstruction *instruction)
 
 void PerformanceModel::iterate()
 {
-   while (m_instruction_queue.size() > 64)
+   while (m_instruction_queue.size() > 1023)
    {
       // While the functional thread is waiting because of clock skew minimization, wait here as well
       #ifdef ENABLE_PERF_MODEL_OWN_THREAD

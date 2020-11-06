@@ -40,7 +40,7 @@ extern UInt64 curr_core_access;
 
 int delay_loop = 50;
 int dummy_time = -1;
-uint curr_time = 0;
+uint curr_time = 1;
 
 
 void lookahead(UInt64 addr);
@@ -56,17 +56,30 @@ bool inLookaheadList(UInt64 addr) {
    return false;
 }
 
+// void lookahead(UInt64 addr) {
+//    lookahead_list.push_back( {addr, dummy_time} );
+//    dummy_time--;
+//    curr_time++;
+//    if (referenced_map[addr]) {
+//       if (!inLookaheadList(addr)){
+//          repair(lookahead_list.back(), curr_time);
+//       }else{
+//          lookahead_list.back().prty = curr_time;
+//       }
+//    }
+// }
+int max_int = INT32_MAX -1 ;
 void lookahead(UInt64 addr) {
-   lookahead_list.push_back( {addr, dummy_time} );
-   dummy_time--;
-   curr_time++;
-   if (referenced_map[addr]) {
-      if (!inLookaheadList(addr)){
-         repair(lookahead_list.back(), curr_time);
-      }else{
-         lookahead_list.back().prty = curr_time;
+   lookahead_list.push_back( {addr, max_int});
+   for (auto it = lookahead_list.rbegin()++; it != lookahead_list.rend(); it++) {
+      if ((*it).addr == addr) {
+         (*it).prty = curr_time;
+         std::cout << "change prty to " << (*it).prty << std::endl;
+         break;
       }
    }
+   curr_time++;
+   max_int--;
 }
 
 void repair(Entry& entry, uint true_prty) {
@@ -741,8 +754,8 @@ void spliteMemoryAccess(UInt64 addr, UInt32 size, UInt32 cache_block_size, Dynam
          }
       }
       //std::cout << "Instruction :" << insturction_number << "; Prediction cache address: " << curr_addr_aligned << std::endl;
-      //lookahead(curr_addr_aligned);
-      lookahead_list.push_back({(UInt64)curr_addr_aligned, 0});
+      lookahead(curr_addr_aligned);
+      //lookahead_list.push_back({(UInt64)curr_addr_aligned, 0});
 
       //std::cout << "57062:" << dynins->instruction->getDisassembly() << std::endl;
       access_cnt++;
