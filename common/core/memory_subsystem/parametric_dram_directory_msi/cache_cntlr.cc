@@ -1344,8 +1344,8 @@ CacheCntlr::invalidateCacheBlock(IntPtr address)
 
    m_master->m_cache->invalidateSingleLine(address);
 
-   if (m_next_cache_cntlr)
-      m_next_cache_cntlr->notifyPrevLevelEvict(m_core_id_master, m_mem_component, address);
+   //if (m_next_cache_cntlr)
+   //   m_next_cache_cntlr->notifyPrevLevelEvict(m_core_id_master, m_mem_component, address);
 
    MYLOG("%lx %c > %c", address, CStateString(old_cstate), CStateString(getCacheState(address)));
 }
@@ -1433,8 +1433,11 @@ MYLOG("evicting @%lx", evict_address);
          m_master->m_evicting_buf = evict_buf;
 
          SubsecondTime latency = SubsecondTime::Zero();
-         for(CacheCntlrList::iterator it = m_master->m_prev_cache_cntlrs.begin(); it != m_master->m_prev_cache_cntlrs.end(); it++)
+         for(CacheCntlrList::iterator it = m_master->m_prev_cache_cntlrs.begin(); it != m_master->m_prev_cache_cntlrs.end(); it++) {
             latency = getMax<SubsecondTime>(latency, (*it)->updateCacheBlock(evict_address, CacheState::INVALID, Transition::BACK_INVAL, NULL, thread_num).first);
+            //latency = getMax<SubsecondTime>(latency, (*it)->updateCacheBlock(evict_address, CacheState::SHARED, Transition::UPGRADE, NULL, thread_num).first);
+
+         }
          getMemoryManager()->incrElapsedTime(latency, thread_num);
          atomic_add_subsecondtime(stats.snoop_latency, latency);
 

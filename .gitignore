@@ -8,3 +8,4 @@ sim.*
 *.log
 lookahead
 */lookahead
+*.exe

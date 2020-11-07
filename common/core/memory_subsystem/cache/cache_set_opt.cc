@@ -3,21 +3,13 @@
 #include "stats.h"
 
 extern std::list<Entry> lookahead_list;
-/*
-Help Function 
-*/
-
-
-
-
-
 
 /*
 CacheSetInfoOPT
 */
 CacheSetInfoOPT::CacheSetInfoOPT(String name, String cfgname, core_id_t core_id, UInt32 associativity, UInt8 num_attempts) 
     : m_associativity(associativity)
-   , m_attempts(NULL) {
+    {
 
 }
 
@@ -25,23 +17,6 @@ CacheSetInfoOPT::~CacheSetInfoOPT() {
 
 }
 
-int CacheSetInfoOPT::getPrty(UInt32 index) {
-    // from cache line index find data address \
-    then find address's prty in lookahead; 
-    return 0;
-}
-
-int CacheSetOPT::getPrty(UInt32 index) {
-    IntPtr addr = m_cache_block_info_array[index]->getAddress();
-    std::cout << "cache to access Prty, address" <<  addr << std::endl;
-    for (auto it = lookahead_list.begin(); it != lookahead_list.end(); it++) {
-        if ((*it).addr == addr) {
-            return (*it).prty;
-        }
-    }
-
-    return 0x7fffffff;
-}
 
 
 /*
@@ -56,6 +31,20 @@ CacheSetOPT::CacheSetOPT(CacheBase::cache_t cache_type,
 CacheSetOPT::~CacheSetOPT() {
 
 }
+
+
+int CacheSetOPT::getPrty(UInt32 index) {
+    IntPtr addr = m_cache_block_info_array[index]->getAddress();
+    std::cout << "cache to access Prty, address" <<  addr << std::endl;
+    for (auto it = lookahead_list.begin(); it != lookahead_list.end(); it++) {
+        if ((*it).addr == addr) {
+            return (*it).prty;
+        }
+    }
+
+    return 0x7fffffff;
+}
+
 
 UInt32 CacheSetOPT::getReplacementIndex(CacheCntlr *cntlr) {
     // First try to find an invalid block
@@ -87,44 +76,7 @@ void CacheSetOPT::updateReplacementIndex(UInt32 accessed_index) {
 }
 
 
-void CacheSetOPT::stackRepair(UInt64 addr, int timer) {
 
-}
-
-void CacheSetOPT::update(int hit_depth){
-    if (hit_depth == 0) {
-        return ;
-    }
-    auto deleted_line = buffer.front();
-    int cnt = 0;
-    for (auto it = buffer.begin()++; it != buffer.end(); it++){
-        int deleted_prty = deleted_line.prty;
-        int current_prty = (*it).prty;
-        if (deleted_prty > current_prty) {
-            auto temp = *it;
-            *it = deleted_line;
-            deleted_line = temp; 
-        }
-        cnt++;
-        it++;
-        if ( cnt = hit_depth ) {
-            break;
-        }
-    }
-}
-
-int CacheSetOPT::lookup(UInt64 addr) {
-    int hit_depth = -1;
-    int cnt = 0;
-    for(auto it = buffer.begin(); it != buffer.end(); it++) {
-        if ((*it).addr == addr) {
-            hit_depth = cnt;
-            break;
-        }
-        cnt++;
-    }
-    return hit_depth;
-}
 
 
 

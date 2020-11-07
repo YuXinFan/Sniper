@@ -38,13 +38,10 @@
 extern std::list<Entry> lookahead_list;
 extern UInt64 curr_core_access;
 
-int delay_loop = 50;
-int dummy_time = -1;
 uint curr_time = 1;
 
 
 void lookahead(UInt64 addr);
-void repair(Entry& entry, uint true_prty);
 bool inLookaheadList(UInt64 addr);
 
 bool inLookaheadList(UInt64 addr) {
@@ -56,48 +53,20 @@ bool inLookaheadList(UInt64 addr) {
    return false;
 }
 
-// void lookahead(UInt64 addr) {
-//    lookahead_list.push_back( {addr, dummy_time} );
-//    dummy_time--;
-//    curr_time++;
-//    if (referenced_map[addr]) {
-//       if (!inLookaheadList(addr)){
-//          repair(lookahead_list.back(), curr_time);
-//       }else{
-//          lookahead_list.back().prty = curr_time;
-//       }
-//    }
-// }
-int max_int = INT32_MAX -1 ;
+int max_int = (INT32_MAX -1)/2 ;
 void lookahead(UInt64 addr) {
    lookahead_list.push_back( {addr, max_int});
    for (auto it = lookahead_list.rbegin()++; it != lookahead_list.rend(); it++) {
       if ((*it).addr == addr) {
+         std::cout << "push, change prty from " << (*it).prty << " to " << curr_time << std::endl;
          (*it).prty = curr_time;
-         std::cout << "change prty to " << (*it).prty << std::endl;
          break;
       }
    }
    curr_time++;
-   max_int--;
+   max_int++;
 }
 
-void repair(Entry& entry, uint true_prty) {
-   int dummy_prty = entry.prty;
-    entry.prty = true_prty;
-    auto entry_ptr = lookahead_list.begin();
-    while (entry_ptr->prty != true_prty) {
-        if ( entry_ptr->prty < 0 
-            && entry_ptr->prty > dummy_prty) {
-                if (entry_ptr->prty < entry.prty) {
-                    auto temp = entry;
-                    entry = *entry_ptr; 
-                    *entry_ptr = temp; 
-                }
-        }
-        entry_ptr++;
-    }
-}
 
 int TraceThread::m_isa = 0;
 
@@ -765,7 +734,6 @@ void spliteMemoryAccess(UInt64 addr, UInt32 size, UInt32 cache_block_size, Dynam
 }
 
 UInt64 icache_last_block = -1;
-int instruction_number = 0;
 
 void TraceThread::handleInstructionDetailed(Sift::Instruction &inst, Sift::Instruction &next_inst, PerformanceModel *prfmdl)
 {
@@ -816,7 +784,6 @@ void TraceThread::handleInstructionDetailed(Sift::Instruction &inst, Sift::Instr
    }
 
    // Push instruction
-   prfmdl->queueInstruction(dynins);
 
    // catch insturction memory access and date memory access 
    auto iaddr = dynins->eip;
@@ -871,6 +838,7 @@ void TraceThread::handleInstructionDetailed(Sift::Instruction &inst, Sift::Instr
          continue;
       }
 
+  
       auto daddr = dynins->memory_info[i].addr;
       auto size = dynins->memory_info[i].size;
 
@@ -881,6 +849,7 @@ void TraceThread::handleInstructionDetailed(Sift::Instruction &inst, Sift::Instr
 
 
 
+   prfmdl->queueInstruction(dynins);
 
    // simulate
    prfmdl->iterate();

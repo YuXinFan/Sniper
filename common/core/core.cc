@@ -429,9 +429,9 @@ Core::initiateMemoryAccess(MemComponent::component_t mem_component,
       // #OPT Cache#
       if (curr_addr_aligned == lookahead_list.front().addr) {
          lookahead_list.pop_front();
-         std::cout << "Data or Inst access address: " << curr_addr_aligned << std::endl;
+         std::cout << "memory access MATCH lookahead: " << curr_addr_aligned << std::endl;
       }else {
-         std::cout << "initial memory access not match"<< std::endl;
+         std::cout << "memory access NOT match lookahead: "<< curr_addr_aligned << " | " << lookahead_list.front().addr << std::endl;
 
       }
       memory_access_cnt++;
