@@ -8,7 +8,7 @@ sim.*
 *.log
 lookahead
 */lookahead
-*.exe
+
 test/*
 test/*/*
 *.d
