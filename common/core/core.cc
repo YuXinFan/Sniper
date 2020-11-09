@@ -433,7 +433,8 @@ Core::initiateMemoryAccess(MemComponent::component_t mem_component,
          //std::cout << "memory access MATCH lookahead: " << curr_addr_aligned << std::endl;
       }else {
          LOG_ASSERT_ERROR(0, "memory access NOT match lookahead ");//std::cout << "memory access NOT match lookahead: "<< curr_addr_aligned << " | " << lookahead_list.front().addr << std::endl;
-         exit(0);
+         std::cout << "memory access NOT match lookahead " << std::endl;
+         assert(0==1);
       }
       memory_access_cnt++;
       access_offset++;

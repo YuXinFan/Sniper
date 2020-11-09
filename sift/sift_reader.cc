@@ -92,7 +92,7 @@ bool Sift::Reader::initStream()
    #endif
 
    inputstream = new std::ifstream(m_filename, std::ios::in);
-   std::cout << "m_filename: " << m_filename << std::endl;
+   //std::cout << "m_filename: " << m_filename << std::endl;
 
    if ((!inputstream->is_open()) || (!inputstream->good()))
    {

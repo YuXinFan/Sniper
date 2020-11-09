@@ -60,7 +60,7 @@ void lookahead(UInt64 addr) {
    lookahead_list.push_back( {addr, max_int});
    for (auto it = lookahead_list.rbegin()++; it != lookahead_list.rend(); it++) {
       if ((*it).addr == addr) {
-         std::cout << "push, change prty from " << (*it).prty << " to " << curr_time << std::endl;
+         //std::cout << "push, change prty from " << (*it).prty << " to " << curr_time << std::endl;
          (*it).prty = curr_time;
          break;
       }
@@ -576,7 +576,7 @@ const dl::DecodedInst* TraceThread::staticDecode(Sift::Instruction &inst)
 
 void TraceThread::handleInstructionWarmup(Sift::Instruction &inst, Sift::Instruction &next_inst, Core *core, bool do_icache_warmup, UInt64 icache_warmup_addr, UInt64 icache_warmup_size)
 {
-   std::cout << "[handleInstructionWarmup]: One Executation" << std::endl;
+   //std::cout << "[handleInstructionWarmup]: One Executation" << std::endl;
    if (m_decoder_cache.count(inst.sinst->addr) == 0)
       m_decoder_cache[inst.sinst->addr] = staticDecode(inst);
    
@@ -998,7 +998,7 @@ void TraceThread::run()
    String threadName = String("trace-") + itostr(m_thread->getId());
    SimSetThreadName(threadName.c_str());
 
-   std::cout << "[TraceThread::run()]: " << "Start" << std::endl;
+  // std::cout << "[TraceThread::run()]: " << "Start" << std::endl;
 
    Sim()->getThreadManager()->onThreadStart(m_thread->getId(), m_time_start);
 
@@ -1123,12 +1123,12 @@ void TraceThread::run()
    // ## OPTCACHE
    
 
-   std::cout << "[TRACE:] Data Memory Access: " << lookahead_list.size() << std::endl;
-   std::cout << "[TRACE:] Head of The Last Data Memory Access: " << lookahead_list.front().addr << std::endl;
+  // std::cout << "[TRACE:] Data Memory Access: " << lookahead_list.size() << std::endl;
+  // std::cout << "[TRACE:] Head of The Last Data Memory Access: " << lookahead_list.front().addr << std::endl;
 
 
 
-   std::cout << "[TRACE:] Last Memory Access: " << curr_core_access << std::endl;
+  // std::cout << "[TRACE:] Last Memory Access: " << curr_core_access << std::endl;
 
    
    

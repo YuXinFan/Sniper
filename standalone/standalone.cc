@@ -203,12 +203,12 @@ int main (int argc, char* argv[]) {
    // With Sim()->hideCfg(), we let Simulator know to complain when someone does call Sim()->getCfg()
    Sim()->hideCfg();
 
-   std::cout << "[standalone]: Start" << std::endl;
+   //std::cout << "[standalone]: Start" << std::endl;
    LOG_ASSERT_ERROR(Sim()->getTraceManager(), "In standalone mode but there is no TraceManager!");
 
 
    Sim()->getTraceManager()->run();
-   std::cout << "[standalone]: Single Run" << std::endl;
+   //std::cout << "[standalone]: Single Run" << std::endl;
 
    // Iterate over a number of application runs. This can allow for a warmup pass before running an application
    for (int i = 1 ; i < Sim()->getCfg()->getInt("traceinput/num_runs") ; i++)
