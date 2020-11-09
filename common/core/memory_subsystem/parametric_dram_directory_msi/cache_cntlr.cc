@@ -384,8 +384,8 @@ LOG_ASSERT_ERROR(offset + data_length <= getCacheBlockSize(), "access until %u >
       // Update the Cache Counters
       getCache()->updateCounters(cache_hit);
       if ( getCache()->m_cache_type == 3 && getCache()->getAssociativity() == 8) {
-         std::cout << "L1 Dcache access: " << ca_address << std::endl;
-         std::cout << "data_access_cnt: " << ++data_access_cnt << std::endl;
+         //std::cout << "L1 Dcache access: " << ca_address << std::endl;
+         //std::cout << "data_access_cnt: " << ++data_access_cnt << std::endl;
 
       }
       updateCounters(mem_op_type, ca_address, cache_hit, getCacheState(cache_block_info), Prefetch::NONE);

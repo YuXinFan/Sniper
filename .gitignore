@@ -9,3 +9,5 @@ sim.*
 lookahead
 */lookahead
 *.exe
+test/*
+test/*/*

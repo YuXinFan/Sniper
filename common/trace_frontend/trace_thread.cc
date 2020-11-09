@@ -37,6 +37,8 @@
 
 extern std::list<Entry> lookahead_list;
 extern UInt64 curr_core_access;
+extern std::unordered_map<UInt64, std::list<int>*> address2count;
+extern int access_offset;
 
 uint curr_time = 1;
 
@@ -724,6 +726,12 @@ void spliteMemoryAccess(UInt64 addr, UInt32 size, UInt32 cache_block_size, Dynam
       }
       //std::cout << "Instruction :" << insturction_number << "; Prediction cache address: " << curr_addr_aligned << std::endl;
       lookahead(curr_addr_aligned);
+      if (address2count[curr_addr_aligned] == NULL) {
+         address2count[curr_addr_aligned] = new std::list<int>();
+         address2count[curr_addr_aligned]->push_back(access_cnt);
+      }else {
+         address2count[curr_addr_aligned]->push_back(access_cnt);
+      }
       //lookahead_list.push_back({(UInt64)curr_addr_aligned, 0});
 
       //std::cout << "57062:" << dynins->instruction->getDisassembly() << std::endl;
@@ -734,6 +742,8 @@ void spliteMemoryAccess(UInt64 addr, UInt32 size, UInt32 cache_block_size, Dynam
 }
 
 UInt64 icache_last_block = -1;
+std::list<Sift::Instruction> instQueue = std::list<Sift::Instruction>();
+std::list<PerformanceModel *>prfmdlQuene = std::list<PerformanceModel *>();
 
 void TraceThread::handleInstructionDetailed(Sift::Instruction &inst, Sift::Instruction &next_inst, PerformanceModel *prfmdl)
 {
@@ -847,12 +857,11 @@ void TraceThread::handleInstructionDetailed(Sift::Instruction &inst, Sift::Instr
       spliteMemoryAccess(daddr, size, cache_block_size, dynins);
    }
 
+   prfmdlQuene.push_back(prfmdl);
+   instQueue.push_back(inst);
 
+   delete dynins;
 
-   prfmdl->queueInstruction(dynins);
-
-   // simulate
-   prfmdl->iterate();
 }
 
 void TraceThread::addDetailedMemoryInfo(DynamicInstruction *dynins, Sift::Instruction &inst, const dl::DecodedInst &decoded_inst, uint32_t mem_idx, Operand::Direction op_type, bool is_prefetch, PerformanceModel *prfmdl)
@@ -929,6 +938,57 @@ void flog(std::string s) {
    std::cout << s << std::endl;
 }
 
+void TraceThread::handleInstructionExecution() {
+   Sift::Instruction  inst = instQueue.front();
+   instQueue.pop_front();
+   PerformanceModel* prfmdl = prfmdlQuene.front();
+   prfmdlQuene.pop_front();
+
+   const dl::DecodedInst &dec_inst = *(m_decoder_cache[inst.sinst->addr]);
+
+   Instruction *ins = m_icache[inst.sinst->addr];
+
+   DynamicInstruction *dynins = prfmdl->createDynamicInstruction(ins, va2pa(inst.sinst->addr));
+
+
+   // Add dynamic instruction info
+
+   if (inst.is_branch)
+   {
+      dynins->addBranch(inst.taken, va2pa(instQueue.front().sinst->addr));
+   }
+
+   
+
+   // Ignore memory-referencing operands in NOP instructions
+   if (!dec_inst.is_nop())
+   {
+      const bool is_prefetch = dec_inst.is_prefetch();
+      // The number of the memory operands of this dec_inst. 
+      for(uint32_t mem_idx = 0; mem_idx < Sim()->getDecoder()->num_memory_operands(&dec_inst); ++mem_idx)
+      {
+         if (Sim()->getDecoder()->op_read_mem(&dec_inst, mem_idx))
+         {
+            addDetailedMemoryInfo(dynins, inst, dec_inst, mem_idx, Operand::READ, is_prefetch, prfmdl);
+            
+         }
+      }
+
+      for(uint32_t mem_idx = 0; mem_idx < Sim()->getDecoder()->num_memory_operands(&dec_inst); ++mem_idx)
+      {
+         if (Sim()->getDecoder()->op_write_mem(&dec_inst, mem_idx))
+         {
+            addDetailedMemoryInfo(dynins, inst, dec_inst, mem_idx, Operand::WRITE, is_prefetch, prfmdl);
+
+
+         }
+      }
+   }
+
+   prfmdl->queueInstruction(dynins);
+   // simulate
+   prfmdl->iterate();
+}
 void TraceThread::run()
 {
    
@@ -1035,14 +1095,20 @@ void TraceThread::run()
    }
 
    // ## OPT CACHE
-   if (m_blocked)
-   {
-      unblock();
-   }
+
 
    core = m_thread->getCore();
    prfmdl = core->getPerformanceModel();
-   prfmdl->iterateAllLast();
+   for (int i = 0; i < instQueue.size(); i++) {
+      if (m_blocked)
+      {
+         unblock();
+      }
+      handleInstructionExecution();
+   }
+   for (auto it = address2count.begin(); it != address2count.end(); it++){
+      delete (*it).second;
+   }
 
       // We may have been rescheduled to a different core
       // by prfmdl->iterate (in handleInstructionDetailed),

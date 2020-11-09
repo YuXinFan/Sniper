@@ -226,9 +226,9 @@ void MicroOpPerformanceModel::handleInstruction(DynamicInstruction *dynins)
 
    insturction_num++;
    if (m_issue_memops) {
-      std::cout << "Handle Data Insturction: " << insturction_num << " Start." << std::endl;
+      //std::cout << "Handle Data Insturction: " << insturction_num << " Start." << std::endl;
       dynins->accessMemory(getCore());
-      std::cout << "Handle Data Insturction: " << insturction_num << " End."<< std::endl;
+      //std::cout << "Handle Data Insturction: " << insturction_num << " End."<< std::endl;
 
    }
 

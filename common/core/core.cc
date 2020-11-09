@@ -31,6 +31,7 @@
 extern std::list<Entry> lookahead_list;
 extern std::list<UInt64> record_for_lookahead;
 extern UInt64 curr_core_access;
+extern std::unordered_map<UInt64, std::list<int>*> address2count;
 
 void lookupAndUpdate(std::list<Entry> & lookahead_buffer, UInt64 addr);
 int lookup(std::list<Entry> & lookahead_buffer,UInt64 addr);
@@ -429,15 +430,16 @@ Core::initiateMemoryAccess(MemComponent::component_t mem_component,
       // #OPT Cache#
       if (curr_addr_aligned == lookahead_list.front().addr) {
          lookahead_list.pop_front();
-         std::cout << "memory access MATCH lookahead: " << curr_addr_aligned << std::endl;
+         //std::cout << "memory access MATCH lookahead: " << curr_addr_aligned << std::endl;
       }else {
-         std::cout << "memory access NOT match lookahead: "<< curr_addr_aligned << " | " << lookahead_list.front().addr << std::endl;
-
+         LOG_ASSERT_ERROR(0, "memory access NOT match lookahead ");//std::cout << "memory access NOT match lookahead: "<< curr_addr_aligned << " | " << lookahead_list.front().addr << std::endl;
+         exit(0);
       }
       memory_access_cnt++;
+      access_offset++;
+      address2count[curr_addr_aligned]->pop_front();
       //std::cout << "momory_access_cnt: " << memory_access_cnt << std::endl;
 
-      referenced_map[curr_addr_aligned] = true;
       // #OPT Cache#
 
       if (hit_where != (HitWhere::where_t)mem_component)

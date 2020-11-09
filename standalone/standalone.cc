@@ -11,9 +11,9 @@
 
 
 std::list<Entry> lookahead_list = std::list<Entry>();
-std::list<UInt64> record_for_lookahead = std::list<UInt64>();
 UInt64 curr_core_access = 0;
-std::map<UInt64, bool> referenced_map = std::map<UInt64, bool>();
+std::unordered_map<UInt64, std::list<int>*> address2count = std::unordered_map<UInt64, std::list<int>*>();
+int access_offset = 0;
 
 
 template <typename T> 
@@ -34,91 +34,91 @@ bool referenced(UInt64 key);
 // void update(std::list<Entry> & lookahead_buffer,int hit_depth);
 
 
-template <typename T> 
-bool dumpList2File(std::list<T> dates, String file_path) {
-   std::ofstream outfile;
-   outfile.open(file_path.c_str());
-   for (auto it = dates.begin(); it != dates.end(); it++) {
-      outfile << ((*it)) << std::endl;
-   }
-   outfile.close();
+// template <typename T> 
+// bool dumpList2File(std::list<T> dates, String file_path) {
+//    std::ofstream outfile;
+//    outfile.open(file_path.c_str());
+//    for (auto it = dates.begin(); it != dates.end(); it++) {
+//       outfile << ((*it)) << std::endl;
+//    }
+//    outfile.close();
 
-   return true;
-}
+//    return true;
+// }
 
-void readListFromFile(std::list<Entry> &l,String file_path) {
-   std::ifstream infile;
-   infile.open(file_path.c_str());
-   String buffer;
-   int prty = 0;
-   while (std::getline(infile, buffer)) {
-      l.push_back({UInt64(buffer.c_str()), prty});
-      prty--;
-   }
-   infile.close();
+// void readListFromFile(std::list<Entry> &l,String file_path) {
+//    std::ifstream infile;
+//    infile.open(file_path.c_str());
+//    String buffer;
+//    int prty = 0;
+//    while (std::getline(infile, buffer)) {
+//       l.push_back({UInt64(buffer.c_str()), prty});
+//       prty--;
+//    }
+//    infile.close();
    
-}
+// }
 
-void rawRepair(std::list<Entry> &buffer, Entry &entry, int true_prty, int depth) {
-    int dummy_prty = entry.prty;
-    entry.prty = true_prty;
-    auto entry_ptr = buffer.begin();
-    while (entry_ptr->addr != true_prty) {
-        if ( entry_ptr->prty < 0 
-            && entry_ptr->prty > dummy_prty) {
-                if (entry_ptr->prty < entry.prty) {
-                    auto temp = entry;
-                    entry = *entry_ptr; 
-                    *entry_ptr = temp; 
-                }
-        }
-        entry_ptr++;
-    }
-}
-void initLookaheadBuffer(std::list<Entry> &buffer) {
-    int prty = (uint32_t)-1;
-    int iteration_cnt = 0;
-    for (auto it = buffer.begin(); it != buffer.end(); it++) {
-        iteration_cnt++;
-        if (referenced(it->addr)) {
-            if (find(buffer, it->addr, iteration_cnt)) {
-                it->prty = prty;
-                prty--;
-            }else {
-                rawRepair(buffer, (*it), prty, iteration_cnt);
-                prty--;
-            }
-        }
-        if (!referenced(it->addr)) {
-           referenced_map[it->addr] = true;
-        }
+// void rawRepair(std::list<Entry> &buffer, Entry &entry, int true_prty, int depth) {
+//     int dummy_prty = entry.prty;
+//     entry.prty = true_prty;
+//     auto entry_ptr = buffer.begin();
+//     while (entry_ptr->addr != true_prty) {
+//         if ( entry_ptr->prty < 0 
+//             && entry_ptr->prty > dummy_prty) {
+//                 if (entry_ptr->prty < entry.prty) {
+//                     auto temp = entry;
+//                     entry = *entry_ptr; 
+//                     *entry_ptr = temp; 
+//                 }
+//         }
+//         entry_ptr++;
+//     }
+// }
+// void initLookaheadBuffer(std::list<Entry> &buffer) {
+//     int prty = (uint32_t)-1;
+//     int iteration_cnt = 0;
+//     for (auto it = buffer.begin(); it != buffer.end(); it++) {
+//         iteration_cnt++;
+//         if (referenced(it->addr)) {
+//             if (find(buffer, it->addr, iteration_cnt)) {
+//                 it->prty = prty;
+//                 prty--;
+//             }else {
+//                 rawRepair(buffer, (*it), prty, iteration_cnt);
+//                 prty--;
+//             }
+//         }
+//         if (!referenced(it->addr)) {
+//            referenced_map[it->addr] = true;
+//         }
 
-        if (iteration_cnt %100 == 0 ) {
-           std::cout << "initLookaheadBuffer:" << iteration_cnt << std::endl;
-        }
-    }
-}
+//         if (iteration_cnt %100 == 0 ) {
+//            std::cout << "initLookaheadBuffer:" << iteration_cnt << std::endl;
+//         }
+//     }
+// }
 
-bool find(std::list<Entry> lookahead_buffer, UInt64 addr, int depth) {
-    int iteration_cnt = 0;
-    for (auto it = lookahead_buffer.begin(); it != lookahead_buffer.end(); it++) {
-        if ( it->addr == addr ) {
-            return true;
-        }   
-        iteration_cnt++;
-        if (iteration_cnt >= depth) {
-            break;
-        }
-    }
-    return false;
-}
+// bool find(std::list<Entry> lookahead_buffer, UInt64 addr, int depth) {
+//     int iteration_cnt = 0;
+//     for (auto it = lookahead_buffer.begin(); it != lookahead_buffer.end(); it++) {
+//         if ( it->addr == addr ) {
+//             return true;
+//         }   
+//         iteration_cnt++;
+//         if (iteration_cnt >= depth) {
+//             break;
+//         }
+//     }
+//     return false;
+// }
 
-bool referenced(UInt64 key) {
-   if (referenced_map.find(key) != referenced_map.end()) {
-      return true;
-   }
-   return false;
-}
+// bool referenced(UInt64 key) {
+//    if (referenced_map.find(key) != referenced_map.end()) {
+//       return true;
+//    }
+//    return false;
+// }
 
 // void lookupAndUpdate(std::list<Entry> & lookahead_buffer, UInt64 addr){
 //    int depth = lookup(lookahead_buffer, addr);
@@ -223,6 +223,6 @@ int main (int argc, char* argv[]) {
    Simulator::release();
    delete cfg;
 
-   dumpList2File(record_for_lookahead, "./lookahead");
+   //dumpList2File(record_for_lookahead, "./lookahead");
    return 0;
 }

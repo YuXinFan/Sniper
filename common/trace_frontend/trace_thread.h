@@ -145,6 +145,8 @@ class TraceThread : public Runnable
       UInt64 getProgressValue();
       Thread* getThread() const { return m_thread; }
       void handleAccessMemory(Core::lock_signal_t lock_signal, Core::mem_op_t mem_op_type, IntPtr d_addr, char* data_buffer, UInt32 data_size);
+
+      void handleInstructionExecution();
 };
 
 #endif // __TRACE_THREAD_H

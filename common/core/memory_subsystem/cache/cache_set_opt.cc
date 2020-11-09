@@ -3,6 +3,8 @@
 #include "stats.h"
 
 extern std::list<Entry> lookahead_list;
+extern std::unordered_map<UInt64, std::list<int>*> address2count;
+extern int access_offset;
 
 /*
 CacheSetInfoOPT
@@ -35,14 +37,22 @@ CacheSetOPT::~CacheSetOPT() {
 
 int CacheSetOPT::getPrty(UInt32 index) {
     IntPtr addr = m_cache_block_info_array[index]->getAddress();
-    std::cout << "cache to access Prty, address" <<  addr << std::endl;
-    for (auto it = lookahead_list.begin(); it != lookahead_list.end(); it++) {
-        if ((*it).addr == addr) {
-            return (*it).prty;
-        }
-    }
 
-    return 0x7fffffff;
+    if (address2count[addr]->size() == 0) {
+        return 0x7fffffff;
+    }else {
+        auto ptr = address2count.at(addr);
+        int raw_position = ptr->front();
+        auto lookahead_front = lookahead_list.begin();
+        std::advance(lookahead_front, raw_position-access_offset);
+        return (*lookahead_front).prty;
+        // for (auto it = lookahead_list.begin(); it != lookahead_list.end(); it++) {
+        //     if ((*it).addr == addr) {
+        //         return (*it).prty;
+        //     }
+        // }
+    }
+    //std::cout << "cache to access Prty, address" <<  addr << std::endl;
 }
 
 
@@ -60,7 +70,7 @@ UInt32 CacheSetOPT::getReplacementIndex(CacheCntlr *cntlr) {
     int selected_prty = getPrty(0);
     for (int i = 1; i < m_associativity; i++) {
         UInt64 block_prty = getPrty(i);     
-        std::cout << "when cache victim, prty: " <<    block_prty << std::endl;
+        //std::cout << "when cache victim, prty: " <<    block_prty << std::endl;
         if (block_prty > selected_prty) {
             selected_index = i;
             selected_prty = block_prty;

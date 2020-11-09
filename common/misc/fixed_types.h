@@ -15,6 +15,7 @@
 #include <inttypes.h>
 #include <list>
 #include <map>
+#include <unordered_map>
 
 // We define __STDC_LIMIT_MACROS and then include stdint.h
 // But if someone else already included stdint.h without first defining __STDC_LIMIT_MACROS,
@@ -56,9 +57,10 @@ typedef struct {
 } Entry;
 
 extern std::list<Entry> lookahead_list;
-extern std::list<UInt64> record_for_lookahead;
 extern UInt64 curr_core_access;
-extern std::map<UInt64, bool> referenced_map;
+
+extern std::unordered_map<UInt64, std::list<int>*> address2count;
+extern int access_offset;
 
 
 #define INVALID_THREAD_ID ((thread_id_t) -1)
