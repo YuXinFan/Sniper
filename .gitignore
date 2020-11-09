@@ -11,3 +11,4 @@ lookahead
 *.exe
 test/*
 test/*/*
+*.d
