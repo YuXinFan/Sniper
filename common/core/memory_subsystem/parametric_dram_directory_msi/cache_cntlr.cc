@@ -312,7 +312,7 @@ CacheCntlr::setDRAMDirectAccess(DramCntlrInterface* dram_cntlr, UInt64 num_outst
 /*****************************************************************************
  * operations called by core on first-level cache
  *****************************************************************************/
-int data_access_cnt = 0;
+
 HitWhere::where_t
 CacheCntlr::processMemOpFromCore(
       Core::lock_signal_t lock_signal,
@@ -383,11 +383,6 @@ LOG_ASSERT_ERROR(offset + data_length <= getCacheBlockSize(), "access until %u >
       ScopedLock sl(getLock());
       // Update the Cache Counters
       getCache()->updateCounters(cache_hit);
-      if ( getCache()->m_cache_type == 3 && getCache()->getAssociativity() == 8) {
-         //std::cout << "L1 Dcache access: " << ca_address << std::endl;
-         //std::cout << "data_access_cnt: " << ++data_access_cnt << std::endl;
-
-      }
       updateCounters(mem_op_type, ca_address, cache_hit, getCacheState(cache_block_info), Prefetch::NONE);
    }
 
@@ -1344,8 +1339,8 @@ CacheCntlr::invalidateCacheBlock(IntPtr address)
 
    m_master->m_cache->invalidateSingleLine(address);
 
-   //if (m_next_cache_cntlr)
-   //   m_next_cache_cntlr->notifyPrevLevelEvict(m_core_id_master, m_mem_component, address);
+   if (m_next_cache_cntlr)
+      m_next_cache_cntlr->notifyPrevLevelEvict(m_core_id_master, m_mem_component, address);
 
    MYLOG("%lx %c > %c", address, CStateString(old_cstate), CStateString(getCacheState(address)));
 }
@@ -1433,11 +1428,8 @@ MYLOG("evicting @%lx", evict_address);
          m_master->m_evicting_buf = evict_buf;
 
          SubsecondTime latency = SubsecondTime::Zero();
-         for(CacheCntlrList::iterator it = m_master->m_prev_cache_cntlrs.begin(); it != m_master->m_prev_cache_cntlrs.end(); it++) {
+         for(CacheCntlrList::iterator it = m_master->m_prev_cache_cntlrs.begin(); it != m_master->m_prev_cache_cntlrs.end(); it++)
             latency = getMax<SubsecondTime>(latency, (*it)->updateCacheBlock(evict_address, CacheState::INVALID, Transition::BACK_INVAL, NULL, thread_num).first);
-            //latency = getMax<SubsecondTime>(latency, (*it)->updateCacheBlock(evict_address, CacheState::SHARED, Transition::UPGRADE, NULL, thread_num).first);
-
-         }
          getMemoryManager()->incrElapsedTime(latency, thread_num);
          atomic_add_subsecondtime(stats.snoop_latency, latency);
 

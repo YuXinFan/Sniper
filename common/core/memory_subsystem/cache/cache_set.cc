@@ -7,7 +7,6 @@
 #include "cache_set_random.h"
 #include "cache_set_round_robin.h"
 #include "cache_set_srrip.h"
-#include "cache_set_opt.h"
 #include "cache_base.h"
 #include "log.h"
 #include "simulator.h"
@@ -167,9 +166,6 @@ CacheSet::createCacheSet(String cfgname, core_id_t core_id,
       case CacheBase::RANDOM:
          return new CacheSetRandom(cache_type, associativity, blocksize);
 
-      case CacheBase::OPT:
-         return new CacheSetOPT(cache_type, associativity, blocksize, dynamic_cast<CacheSetInfoOPT*>(set_info), getNumQBSAttempts(policy, cfgname, core_id));
-
       default:
          LOG_PRINT_ERROR("Unrecognized Cache Replacement Policy: %i",
                policy);
@@ -190,8 +186,6 @@ CacheSet::createCacheSetInfo(String name, String cfgname, core_id_t core_id, Str
       case CacheBase::SRRIP:
       case CacheBase::SRRIP_QBS:
          return new CacheSetInfoLRU(name, cfgname, core_id, associativity, getNumQBSAttempts(policy, cfgname, core_id));
-      case CacheBase::OPT:
-         return new CacheSetInfoOPT(name, cfgname, core_id, associativity, getNumQBSAttempts(policy, cfgname, core_id));
       default:
          return NULL;
    }
@@ -233,8 +227,6 @@ CacheSet::parsePolicyType(String policy)
       return CacheBase::SRRIP_QBS;
    if (policy == "random")
       return CacheBase::RANDOM;
-   if (policy == "opt")
-      return CacheBase::OPT;
 
    LOG_PRINT_ERROR("Unknown replacement policy %s", policy.c_str());
 }

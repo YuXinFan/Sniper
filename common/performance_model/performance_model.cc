@@ -62,7 +62,7 @@ PerformanceModel::PerformanceModel(Core *core)
    #ifdef ENABLE_PERF_MODEL_OWN_THREAD
    , m_instruction_queue(256) // Reduce from default size to keep memory issue time more or less synchronized
    #else
-   , m_instruction_queue(4096) // Need a bit more space for when the dyninsninfo items aren't coming in yet, or for a boatload of TLBMissInstructions
+   , m_instruction_queue(1024) // Need a bit more space for when the dyninsninfo items aren't coming in yet, or for a boatload of TLBMissInstructions
    #endif
    , m_current_ins_index(0)
 {
@@ -292,31 +292,6 @@ void PerformanceModel::handleIdleInstruction(PseudoInstruction *instruction)
 }
 
 void PerformanceModel::iterate()
-{
-   while (m_instruction_queue.size() > 0)
-   {
-      // While the functional thread is waiting because of clock skew minimization, wait here as well
-      #ifdef ENABLE_PERF_MODEL_OWN_THREAD
-      while(m_hold)
-         sched_yield();
-      #endif
-
-      DynamicInstruction *ins = m_instruction_queue.front();
-
-      LOG_ASSERT_ERROR(!ins->instruction->isIdle(), "Idle instructions should not make it here!");
-
-      if (!m_fastforward && m_enabled)
-         handleInstruction(ins);
-
-      delete ins;
-
-      m_instruction_queue.pop();
-   }
-
-   synchronize();
-}
-
-void PerformanceModel::iterateAllLast()
 {
    while (m_instruction_queue.size() > 0)
    {

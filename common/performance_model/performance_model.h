@@ -126,7 +126,6 @@ protected:
    UInt64 m_instruction_count;
 
    ComponentTime m_elapsed_time;
-
 private:
    ComponentTime m_idle_elapsed_time;
 
@@ -144,18 +143,13 @@ private:
    SubsecondTime m_cpiSyncDvfsTransition;
    SubsecondTime m_cpiRecv;
 
+   InstructionQueue m_instruction_queue;
 
    UInt32 m_current_ins_index;
 
    BranchPredictor *m_bp;
 
    InstructionTracer *m_instruction_tracer;
-
-public :
-   InstructionQueue m_instruction_queue;
-
-   void iterateAllLast();
-
 };
 
 #endif

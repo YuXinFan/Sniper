@@ -1,1 +1,0 @@
-/home/fanyx/courses/CAII/sniper/frontend/pin-frontend/../../sift/sift_assert.h

@@ -1,1 +1,0 @@
-/home/fanyx/courses/CAII/sniper/sift/recorder/../../common/misc/fixed_types.h

@@ -34,15 +34,16 @@ void TraceManager::setupTraceFiles(int index)
    m_trace_prefix = Sim()->getCfg()->getStringArray("traceinput/trace_prefix", index);
 
    if (m_emulate_syscalls)
-   {  
+   {
       if (m_trace_prefix == "")
       {
+         std::cerr << "Error: a trace prefix is required when emulating syscalls." << std::endl;
          exit(1);
       }
    }
 
    if (m_trace_prefix != "")
-   {  
+   {
       for (UInt32 i = 0 ; i < m_num_apps ; i++ )
       {
          m_tracefiles[i] = getFifoName(i, 0, false /*response*/, false /*create*/);
@@ -129,6 +130,7 @@ thread_id_t TraceManager::newThread(app_id_t app_id, bool first, bool init_fifo,
          next threads are created once we're running so spawn them right away. */
       tthread->spawn();
    }
+
    return thread->getId();
 }
 
@@ -278,7 +280,6 @@ void TraceManager::run()
 {
    start();
    wait();
-
 }
 
 UInt64 TraceManager::getProgressExpect()
