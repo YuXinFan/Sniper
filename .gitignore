@@ -3,7 +3,7 @@ docs/
 *.o
 *.d
 *.a
-[a-z]*
+test/
 config/buildconf.makefile
 config/buildconf.sh
 config/sniper.py
@@ -48,5 +48,6 @@ tools/sniper_config.pyc
 tools/sniper_lib.pyc
 tools/sniper_stats.pyc
 tools/sniper_stats_sqlite.pyc
+tools/addr2line.pyc
 xed/
 xed_kit/

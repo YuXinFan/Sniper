@@ -1,0 +1,98 @@
+fft
+raw
+Branch predictor stats               |           
+  num correct                        |      70750
+  num incorrect                      |       4963
+  misprediction rate                 |      6.56%
+  mpki                               |       3.03
+new
+Branch predictor stats               |           
+  num correct                        |      68954
+  num incorrect                      |       6735
+  misprediction rate                 |      8.90%
+  mpki                               |       4.11
+------
+fft
+raw
+Branch predictor stats               |           
+  num correct                        |      70750
+  num incorrect                      |       4963
+  misprediction rate                 |      6.56%
+  mpki                               |       3.03
+new
+Branch predictor stats               |           
+  num correct                        |      69326
+  num incorrect                      |       6387
+  misprediction rate                 |      8.44%
+  mpki                               |       3.90
+------
+fft
+raw
+Branch predictor stats               |           
+  num correct                        |      70750
+  num incorrect                      |       4955
+  misprediction rate                 |      6.55%
+  mpki                               |       3.03
+new
+Branch predictor stats               |           
+  num correct                        |      69507
+  num incorrect                      |       6198
+  misprediction rate                 |      8.19%
+  mpki                               |       3.78
+------
+fft
+raw
+Branch predictor stats               |           
+  num correct                        |      70748
+  num incorrect                      |       4965
+  misprediction rate                 |      6.56%
+  mpki                               |       3.03
+new
+Branch predictor stats               |           
+  num correct                        |      66858
+  num incorrect                      |       8851
+  misprediction rate                 |     11.69%
+  mpki                               |       5.40
+------
+fft
+raw
+Branch predictor stats               |           
+  num correct                        |      70750
+  num incorrect                      |       4955
+  misprediction rate                 |      6.55%
+  mpki                               |       3.03
+new
+Branch predictor stats               |           
+  num correct                        |      67053
+  num incorrect                      |       8638
+  misprediction rate                 |     11.41%
+  mpki                               |       5.27
+------
+fft
+raw
+Branch predictor stats               |           
+  num correct                        |      70748
+  num incorrect                      |       4965
+  misprediction rate                 |      6.56%
+  mpki                               |       3.03
+new
+Branch predictor stats               |           
+  num correct                        |      67120
+  num incorrect                      |       8569
+  misprediction rate                 |     11.32%
+  mpki                               |       5.23
+------
+fft
+raw
+Branch predictor stats               |           
+  num correct                        |      70750
+  num incorrect                      |       4963
+  misprediction rate                 |      6.56%
+  mpki                               |       3.03
+new
+Branch predictor stats               |           
+  num correct                        |      72260
+  num incorrect                      |       3415
+  misprediction rate                 |      4.51%
+  mpki                               |       2.09
+------
