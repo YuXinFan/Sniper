@@ -44,20 +44,20 @@ void PerceptronBranchPredictor::initHistory(){
         m_history[i] = 0;
     }
 
-    std::string line;
-    std::ifstream sample ("sample.txt");
-    if (sample.is_open())
-    {
-        int i = 0;
-        while ( getline (sample,line) && ( i < m_history_length ) )
-        {
-            int k = std::stoi(line);
-            m_history[i] = k;
-            i++;
+    // std::string line;
+    // std::ifstream sample ("sample.txt");
+    // if (sample.is_open())
+    // {
+    //     int i = 0;
+    //     while ( getline (sample,line) && ( i < m_history_length ) )
+    //     {
+    //         int k = std::stoi(line);
+    //         m_history[i] = k;
+    //         i++;
             
-        }
-        sample.close();
-    }
+    //     }
+    //     sample.close();
+    // }
 
 }
 
