@@ -45,7 +45,7 @@ template <typename T> class BaseCoreModel : public CoreModel
       virtual Allocator* createDMOAllocator() const
       {
          // We need to be able to hold one (Pin) trace worth of MicroOps, as we can only stop functional simulation at the skew barrier
-         return new TypedAllocator<T, 81920>();
+         return new TypedAllocator<T, 8192>();
       }
 
       DynamicMicroOp* createDynamicMicroOp(Allocator *alloc, const MicroOp *uop, ComponentPeriod period) const

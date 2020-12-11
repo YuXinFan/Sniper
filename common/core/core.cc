@@ -28,54 +28,6 @@
 
 #define VERBOSE 0
 
-extern std::list<Entry> lookahead_list;
-extern std::list<UInt64> record_for_lookahead;
-extern UInt64 curr_core_access;
-extern std::unordered_map<UInt64, std::list<int>*> address2count;
-
-void lookupAndUpdate(std::list<Entry> & lookahead_buffer, UInt64 addr);
-int lookup(std::list<Entry> & lookahead_buffer,UInt64 addr);
-void update(std::list<Entry> & lookahead_buffer,int hit_depth);
-void lookupAndUpdate(std::list<Entry> & lookahead_buffer, UInt64 addr){
-   int depth = lookup(lookahead_buffer, addr);
-   update(lookahead_buffer, depth);
-}
-
-int lookup(std::list<Entry> &lookahead_buffer, UInt64 addr) {
-    int hit_depth = -1;
-    int cnt = 0;
-    for(auto it = lookahead_buffer.begin(); it != lookahead_buffer.end(); it++) {
-        if ((*it).addr == addr) {
-            hit_depth = cnt;
-            break;
-        }
-        cnt++;
-    }
-    return hit_depth;
-}
-
-void update(std::list<Entry> &lookahead_buffer, int hit_depth){
-    if (hit_depth == 0) {
-        return ;
-    }
-    auto deleted_line = lookahead_buffer.front();
-    int cnt = 0;
-    for (auto it = lookahead_buffer.begin()++; it != lookahead_buffer.end(); it++){
-        int deleted_prty = deleted_line.prty;
-        int current_prty = (*it).prty;
-        if (deleted_prty > current_prty) {
-            auto temp = *it;
-            *it = deleted_line;
-            deleted_line = temp; 
-        }
-        cnt++;
-        it++;
-        if ( cnt = hit_depth ) {
-            break;
-        }
-    }
-}
-
 const char * ModeledString(Core::MemModeled modeled) {
    switch(modeled)
    {
@@ -291,7 +243,6 @@ Core::readInstructionMemory(IntPtr address, UInt32 instruction_size)
    {
       if (single_cache_line)
       {
-         //std::cout << "I momory Accessed in cache:" << address << std::endl;
          return makeMemoryResult(HitWhere::L1I, getMemoryManager()->getL1HitLatency());
       }
       else
@@ -303,8 +254,6 @@ Core::readInstructionMemory(IntPtr address, UInt32 instruction_size)
 
    // Update the most recent cache line accessed
    m_icache_last_block = address & blockmask;
-
-   //std::cout <<"I memory Access: " << address  << std::endl;
 
    // Cases with multiple cache lines or when we are not sure that it will be a hit call into the caches
    return initiateMemoryAccess(MemComponent::L1_ICACHE,
@@ -322,7 +271,6 @@ void Core::accessMemoryFast(bool icache, mem_op_t mem_op_type, IntPtr address)
       m_performance_model->handleMemoryLatency(latency, HitWhere::MISS);
 }
 
-int memory_access_cnt = 0;
 MemoryResult
 Core::initiateMemoryAccess(MemComponent::component_t mem_component,
       lock_signal_t lock_signal,
@@ -413,11 +361,6 @@ Core::initiateMemoryAccess(MemComponent::component_t mem_component,
 
       if (m_cheetah_manager)
          m_cheetah_manager->access(mem_op_type, curr_addr_aligned);
-         
-      // #OPT Cache#
-      curr_core_access = curr_addr_aligned;
-      
-      // #OPT Cache#
 
       HitWhere::where_t this_hit_where = getMemoryManager()->coreInitiateMemoryAccess(
                mem_component,
@@ -426,22 +369,6 @@ Core::initiateMemoryAccess(MemComponent::component_t mem_component,
                curr_addr_aligned, curr_offset,
                data_buf ? curr_data_buffer_head : NULL, curr_size,
                modeled);
-
-      // #OPT Cache#
-      if (curr_addr_aligned == lookahead_list.front().addr) {
-         lookahead_list.pop_front();
-         //std::cout << "memory access MATCH lookahead: " << curr_addr_aligned << std::endl;
-      }else {
-         LOG_ASSERT_ERROR(0, "memory access NOT match lookahead ");//std::cout << "memory access NOT match lookahead: "<< curr_addr_aligned << " | " << lookahead_list.front().addr << std::endl;
-         std::cout << "memory access NOT match lookahead " << std::endl;
-         assert(0==1);
-      }
-      memory_access_cnt++;
-      access_offset++;
-      address2count[curr_addr_aligned]->pop_front();
-      //std::cout << "momory_access_cnt: " << memory_access_cnt << std::endl;
-
-      // #OPT Cache#
 
       if (hit_where != (HitWhere::where_t)mem_component)
       {
@@ -548,12 +475,9 @@ Core::accessMemory(lock_signal_t lock_signal, mem_op_t mem_op_type, IntPtr d_add
       }
       data_buffer = NULL; // initiateMemoryAccess's data is not used
    }
-   //std::cout <<"D memory Access: " << d_addr  << std::endl;
 
-   if (modeled == MEM_MODELED_NONE){
-      std::cout << "MEM_MODELED_NONE" << std::endl;
+   if (modeled == MEM_MODELED_NONE)
       return makeMemoryResult(HitWhere::UNKNOWN, SubsecondTime::Zero());
-   }
    else
       return initiateMemoryAccess(MemComponent::L1_DCACHE, lock_signal, mem_op_type, d_addr, (Byte*) data_buffer, data_size, modeled, eip, now);
 }
