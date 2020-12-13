@@ -78,3 +78,948 @@ perceptron
 perceptron-local
   misprediction rate                 |      0.42%
 ------
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     152597 |      72440 |      72441 |      72240
+    num cache misses                 |      12183 |       8516 |       8194 |       8213
+    miss rate                        |      7.98% |     11.76% |     11.31% |     11.37%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2318 |         20 |         37 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3500 |       3454 |       3749 |       3652
+    num cache accesses               |     153335 |      72958 |      72718 |      72230
+    num cache misses                 |      20556 |       8723 |       8528 |       8489
+    miss rate                        |     13.41% |     11.96% |     11.73% |     11.75%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       8318 |         44 |         63 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3432 |       3418 |       3675 |       3506
+    num cache accesses               |     154088 |      73707 |      72703 |      72235
+    num cache misses                 |      20925 |       8925 |       8581 |       8536
+    miss rate                        |     13.58% |     12.11% |     11.80% |     11.82%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       8321 |         34 |         14 |         20
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3476 |       3469 |       3822 |       3733
+    num cache accesses               |     154088 |      73702 |      72336 |      71871
+    num cache misses                 |      20757 |       8957 |       8556 |       8426
+    miss rate                        |     13.47% |     12.15% |     11.83% |     11.72%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       8326 |         34 |         14 |         15
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3464 |       3486 |       3864 |       3704
+    num cache accesses               |     152651 |      72815 |      73164 |      72595
+    num cache misses                 |      15574 |       8916 |       8589 |       8699
+    miss rate                        |     10.20% |     12.24% |     11.74% |     11.98%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       4354 |         27 |         57 |         37
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3659 |       3626 |       3865 |       3851
+    num cache accesses               |     153017 |      72818 |      72165 |      72271
+    num cache misses                 |      15287 |       8360 |       8369 |       8303
+    miss rate                        |      9.99% |     11.48% |     11.60% |     11.49%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       4361 |         28 |          8 |         11
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3306 |       3288 |       3697 |       3566
+    num cache accesses               |     153310 |      72820 |      72495 |      71943
+    num cache misses                 |      15356 |       8762 |       8424 |       8393
+    miss rate                        |     10.02% |     12.03% |     11.62% |     11.67%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       4367 |         32 |          7 |          9
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3391 |       3568 |       3852 |       3718
+    num cache accesses               |     153007 |      72752 |      72447 |      71835
+    num cache misses                 |      12290 |       8463 |       8192 |       8046
+    miss rate                        |      8.03% |     11.63% |     11.31% |     11.20%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2322 |         25 |         38 |          7
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3361 |       3345 |       3738 |       3489
+    num cache accesses               |     152907 |      72750 |      72140 |      72245
+    num cache misses                 |      12390 |       8336 |       8159 |       8011
+    miss rate                        |      8.10% |     11.46% |     11.31% |     11.09%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2316 |         17 |          5 |         15
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3362 |       3346 |       3722 |       3575
+    num cache accesses               |     153002 |      72750 |      72759 |      71830
+    num cache misses                 |      12405 |       8447 |       8134 |       8005
+    miss rate                        |      8.11% |     11.61% |     11.18% |     11.14%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2337 |         22 |          8 |          5
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3429 |       3488 |       3767 |       3700
+    num cache accesses               |     154078 |      73322 |      73352 |      72710
+    num cache misses                 |      20599 |       8810 |       8540 |       8536
+    miss rate                        |     13.37% |     12.02% |     11.64% |     11.74%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       8315 |         46 |         67 |         41
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3535 |       3308 |       3633 |       3643
+    num cache accesses               |     154452 |      73328 |      71866 |      71972
+    num cache misses                 |      20341 |       8826 |       8367 |       8251
+    miss rate                        |     13.17% |     12.04% |     11.64% |     11.46%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       8305 |         38 |          9 |         19
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3461 |       3457 |       3748 |       3683
+    num cache accesses               |     153701 |      73320 |      73086 |      71871
+    num cache misses                 |      20634 |       8994 |       8553 |       8564
+    miss rate                        |     13.42% |     12.27% |     11.70% |     11.92%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       8303 |         41 |         21 |          9
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3590 |       3546 |       3764 |       3736
+    num cache accesses               |     153325 |      73820 |      72494 |      71940
+    num cache misses                 |      14974 |       8481 |       8286 |       8223
+    miss rate                        |      9.77% |     11.49% |     11.43% |     11.43%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       4347 |         40 |         46 |         13
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3357 |       3279 |       3646 |       3581
+    num cache accesses               |     153425 |      72818 |      72497 |      71852
+    num cache misses                 |      15248 |       8712 |       8494 |       8194
+    miss rate                        |      9.94% |     11.96% |     11.72% |     11.40%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       4356 |         32 |          7 |          7
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3497 |       3605 |       3829 |       3711
+    num cache accesses               |     153312 |      72818 |      72176 |      71943
+    num cache misses                 |      14836 |       8594 |       8442 |       8266
+    miss rate                        |      9.68% |     11.80% |     11.70% |     11.49%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       4346 |         28 |          9 |         10
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3285 |       3345 |       3812 |       3594
+    num cache accesses               |     152911 |      72440 |      72135 |      72239
+    num cache misses                 |      12040 |       8329 |       8142 |       7938
+    miss rate                        |      7.87% |     11.50% |     11.29% |     10.99%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2329 |         20 |         24 |         23
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3347 |       3424 |       3740 |       3598
+    num cache accesses               |     152704 |      72752 |      73386 |      71835
+    num cache misses                 |      12033 |       8379 |       8101 |       7912
+    miss rate                        |      7.88% |     11.52% |     11.04% |     11.01%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2323 |         22 |         10 |          4
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3382 |       3487 |       3723 |       3586
+    num cache accesses               |     153000 |      72753 |      72444 |      71834
+    num cache misses                 |      11826 |       8300 |       8257 |       8105
+    miss rate                        |      7.73% |     11.41% |     11.40% |     11.28%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       2320 |         22 |          6 |          6
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3237 |       3399 |       3817 |       3658
+    num cache accesses               |     153713 |      72958 |      72617 |      72336
+    num cache misses                 |      20007 |       8645 |       8521 |       8337
+    miss rate                        |     13.02% |     11.85% |     11.73% |     11.53%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       8312 |         49 |         57 |         33
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3371 |       3331 |       3665 |       3467
+    num cache accesses               |     154452 |      73320 |      71865 |      71967
+    num cache misses                 |      19951 |       8789 |       8352 |       8392
+    miss rate                        |     12.92% |     11.99% |     11.62% |     11.66%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       8310 |         38 |          9 |         17
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3287 |       3311 |       3697 |       3560
+    num cache accesses               |     154452 |      73328 |      71866 |      71972
+    num cache misses                 |      19982 |       8939 |       8549 |       8388
+    miss rate                        |     12.94% |     12.19% |     11.90% |     11.65%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       8313 |         37 |          7 |         21
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3390 |       3485 |       3814 |       3767
+    num cache accesses               |     152651 |      72916 |      73164 |      72494
+    num cache misses                 |      15090 |       8697 |       8384 |       8502
+    miss rate                        |      9.89% |     11.93% |     11.46% |     11.73%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       4354 |         31 |         67 |         30
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3513 |       3585 |       3831 |       3741
+    num cache accesses               |     152739 |      72818 |      73491 |      72181
+    num cache misses                 |      14964 |       8649 |       8423 |       8322
+    miss rate                        |      9.80% |     11.88% |     11.46% |     11.53%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       4354 |         29 |         14 |          9
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3610 |       3509 |       3830 |       3603
+    num cache accesses               |     152998 |      72827 |      72169 |      72271
+    num cache misses                 |      14890 |       8744 |       8389 |       8343
+    miss rate                        |      9.73% |     12.01% |     11.62% |     11.54%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       4354 |         26 |         11 |         11
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3535 |       3428 |       3853 |       3636
+    num cache accesses               |     152998 |      72827 |      72169 |      72271
+    num cache misses                 |      14890 |       8744 |       8389 |       8343
+    miss rate                        |      9.73% |     12.01% |     11.62% |     11.54%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       4354 |         26 |         11 |         11
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3535 |       3428 |       3853 |       3636
+    num cache accesses               |     152998 |      72827 |      72169 |      72271
+    num cache misses                 |      14890 |       8744 |       8389 |       8343
+    miss rate                        |      9.73% |     12.01% |     11.62% |     11.54%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       4354 |         26 |         11 |         11
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3535 |       3428 |       3853 |       3636
+    num cache accesses               |     152998 |      72827 |      72169 |      72271
+    num cache misses                 |      14890 |       8744 |       8389 |       8343
+    miss rate                        |      9.73% |     12.01% |     11.62% |     11.54%
+Coherency Traffic                    |            |            |            |           
+  num loads from dram                |       4354 |         26 |         11 |         11
+  num loads from dram cache          |          0 |          0 |          0 |          0
+  num loads from remote cache        |       3535 |       3428 |       3853 |       3636

@@ -1,12 +1,12 @@
-
 if [ $# == 0 ]
 then 
-    ./run-sniper -c ./config-raw.cfg -- ./mytest/lab0.exe
-elif [ $# == 1 ]
-then 
-    ./run-sniper -c ./config-"$1".cfg -- ./mytest/lab0.exe 
+    echo "no arguments"
 elif [ $# == 2 ]
 then
-    ./run-sniper -c ./config-"$1".cfg -- ./mytest/"$2"
+    ./run-sniper -c ./myconfig/config-"$1".cfg -- ./mytest/"$2"
+    miss_rate=`sed -n 38,38p sim.out`
+    traffic=`sed -n 53,53p sim.out`
+    echo $miss_rate
+    echo $traffic
 fi 
     

@@ -1429,7 +1429,9 @@ MYLOG("evicting @%lx", evict_address);
 
          SubsecondTime latency = SubsecondTime::Zero();
          for(CacheCntlrList::iterator it = m_master->m_prev_cache_cntlrs.begin(); it != m_master->m_prev_cache_cntlrs.end(); it++)
-            latency = getMax<SubsecondTime>(latency, (*it)->updateCacheBlock(evict_address, CacheState::INVALID, Transition::BACK_INVAL, NULL, thread_num).first);
+         {
+            //latency = getMax<SubsecondTime>(latency, (*it)->updateCacheBlock(evict_address, CacheState::INVALID, Transition::BACK_INVAL, NULL, thread_num).first);
+         }
          getMemoryManager()->incrElapsedTime(latency, thread_num);
          atomic_add_subsecondtime(stats.snoop_latency, latency);
 
@@ -1498,6 +1500,7 @@ MYLOG("evicting @%lx", evict_address);
 MYLOG("evict FLUSH %lx", evict_address);
             getMemoryManager()->sendMsg(PrL1PrL2DramDirectoryMSI::ShmemMsg::FLUSH_REP,
                   MemComponent::LAST_LEVEL_CACHE, MemComponent::TAG_DIR,
+                  //MemComponent::LAST_LEVEL_CACHE, MemComponent::DRAM,
                   m_core_id /* requester */,
                   home_node_id /* receiver */,
                   evict_address,
@@ -1541,16 +1544,26 @@ CacheCntlr::updateCacheBlock(IntPtr address, CacheState::cstate_t new_cstate, Tr
    SubsecondTime latency = SubsecondTime::Zero();
    bool sibling_hit = false;
 
-   if (! m_master->m_prev_cache_cntlrs.empty())
-   {
-      for(CacheCntlrList::iterator it = m_master->m_prev_cache_cntlrs.begin(); it != m_master->m_prev_cache_cntlrs.end(); it++) {
-         std::pair<SubsecondTime, bool> res = (*it)->updateCacheBlock(
-            address, new_cstate, reason == Transition::EVICT ? Transition::BACK_INVAL : reason, NULL, thread_num);
-         // writeback_time is for the complete stack, so only model it at the last level, ignore latencies returned by previous ones
-         //latency = getMax<SubsecondTime>(latency, res.first);
-         sibling_hit |= res.second;
-      }
-   }
+   // if (! m_master->m_prev_cache_cntlrs.empty())
+   // {
+   //    for(CacheCntlrList::iterator it = m_master->m_prev_cache_cntlrs.begin(); it != m_master->m_prev_cache_cntlrs.end(); it++) {
+   //       std::pair<SubsecondTime, bool> res = (*it)->updateCacheBlock(
+   //          address, new_cstate, reason == Transition::EVICT ? Transition::BACK_INVAL : reason, NULL, thread_num);
+   //       // writeback_time is for the complete stack, so only model it at the last level, ignore latencies returned by previous ones
+   //       //latency = getMax<SubsecondTime>(latency, res.first);
+   //       sibling_hit |= res.second;
+   //    }
+   // }
+   // if ( ! m_master->m_prev_cache_cntlrs.empty())
+   // {
+   //    for(CacheCntlrList::iterator it = m_master->m_prev_cache_cntlrs.begin(); it != m_master->m_prev_cache_cntlrs.end(); it++) {
+   //       std::pair<SubsecondTime, bool> res = (*it)->updateCacheBlock(
+   //          address, new_cstate, reason , NULL, thread_num);
+   //       // writeback_time is for the complete stack, so only model it at the last level, ignore latencies returned by previous ones
+   //       //latency = getMax<SubsecondTime>(latency, res.first);
+   //       sibling_hit |= res.second;
+   //    }
+   // }
 
    SharedCacheBlockInfo* cache_block_info = getCacheBlockInfo(address);
    __attribute__((unused)) CacheState::cstate_t old_cstate = cache_block_info ? cache_block_info->getCState() : CacheState::INVALID;
@@ -1598,10 +1611,10 @@ CacheCntlr::updateCacheBlock(IntPtr address, CacheState::cstate_t new_cstate, Tr
          {
             ++stats.coherency_upgrades;
          }
-         else if (reason == Transition::BACK_INVAL)
-         {
-            ++stats.backinval[cache_block_info->getCState()];
-         }
+         // else if (reason == Transition::BACK_INVAL)
+         // {
+         //    ++stats.backinval[cache_block_info->getCState()];
+         // }
       }
 
       if (cache_block_info->getCState() == CacheState::MODIFIED) {
@@ -1707,10 +1720,10 @@ assert(data_length==getCacheBlockSize());
       if (data_buf)
          memcpy(m_master->m_evicting_buf + offset, data_buf, data_length);
    } else {
-      __attribute__((unused)) SharedCacheBlockInfo* cache_block_info = (SharedCacheBlockInfo*) m_master->m_cache->accessSingleLine(
-         address + offset, Cache::STORE, data_buf, data_length, getShmemPerfModel()->getElapsedTime(thread_num), false);
-      LOG_ASSERT_ERROR(cache_block_info, "writethrough expected a hit at next-level cache but got miss");
-      LOG_ASSERT_ERROR(cache_block_info->getCState() == CacheState::MODIFIED, "Got writeback for non-MODIFIED line");
+      //__attribute__((unused)) SharedCacheBlockInfo* cache_block_info = (SharedCacheBlockInfo*) m_master->m_cache->accessSingleLine(
+      //  address + offset, Cache::STORE, data_buf, data_length, getShmemPerfModel()->getElapsedTime(thread_num), false);
+      //LOG_ASSERT_ERROR(cache_block_info, "writethrough expected a hit at next-level cache but got miss");
+      //LOG_ASSERT_ERROR(cache_block_info->getCState() == CacheState::MODIFIED, "Got writeback for non-MODIFIED line");
    }
 
    if (m_cache_writethrough) {
